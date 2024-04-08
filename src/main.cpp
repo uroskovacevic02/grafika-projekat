@@ -182,6 +182,12 @@ int main() {
     // configure global opengl state
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
+    //face culling
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+    //blending
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // build and compile shaders
     // -------------------------
@@ -273,9 +279,12 @@ int main() {
     Model modelPatrik("resources/objects/patrick/scene.gltf");
     modelPatrik.SetShaderTextureNamePrefix("material.");
 
-    Model modelSand("resources/objects/sand/scene.gltf");
-    modelSand.SetShaderTextureNamePrefix("material.");
 
+    Model modelKola("resources/objects/krusty_krab_patty_wagon/scene.gltf");
+    modelKola.SetShaderTextureNamePrefix("material.");
+
+    Model modelLampa("resources/objects/bus_stop-spongebob_battle_for_bkinibottom/scene.gltf");
+    modelLampa.SetShaderTextureNamePrefix("material.");
 
 
     //pointlight
@@ -346,7 +355,7 @@ int main() {
 
         modelShader.use();
 
-        pointLight.position = glm::vec3(1.0f, 2.0f, 2.0f);
+        pointLight.position = glm::vec3(-22.0f, -5.0f, 0.0f);
         modelShader.setVec3("pointLight.position", pointLight.position);
         modelShader.setVec3("pointLight.ambient", pointLight.ambient);
         modelShader.setVec3("pointLight.diffuse", pointLight.diffuse);
@@ -377,6 +386,8 @@ int main() {
 
         modelShader.setMat4("projection", projection);
         modelShader.setMat4("view", view);
+
+
 
         // render the loaded model
         //sundjerbob model
@@ -417,11 +428,22 @@ int main() {
         modelShader.setMat4("model", model);
         modelPatrik.Draw(modelShader);
 
+        //kola
         model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, -5.0f, 0.0f)); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(2.5f));    // it's a bit too big for our scene, so scale it down
+        model = glm::translate(model, glm::vec3(12.0f, 0.0f, -2.0f)); // translate it down so it's at the center of the scene
+        model = glm::scale(model, glm::vec3(3.5f));    // it's a bit too big for our scene, so scale it down
         modelShader.setMat4("model", model);
-        modelSand.Draw(modelShader);
+        modelKola.Draw(modelShader);
+
+        //lampa
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-22.0f, -5.0f, 0.0f)); // translate it down so it's at the center of the scene
+        model = glm::rotate(model, 1.57f, glm::vec3(-1.0f, 0.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(3.5f));    // it's a bit too big for our scene, so scale it down
+        modelShader.setMat4("model", model);
+        modelLampa.Draw(modelShader);
+
+
 
 
         glDepthFunc(GL_LEQUAL);
