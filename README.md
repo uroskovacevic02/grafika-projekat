@@ -1,3 +1,4 @@
+[LearnOpenGL](https://learnopengl.com/) materials used for this project.
 ## Advanced techniques
 - Cubemaps
 - Normal & Parallax mapping
@@ -16,9 +17,9 @@
 [Lapmpost](https://sketchfab.com/3d-models/bus-stop-spongebob-battle-for-bkinibottom-6bec019924174b6691ea0e09b09ddee9) \
 [Car](https://sketchfab.com/3d-models/krusty-krab-patty-wagon-196ed80846d94df29e8e5464156d6257) \
 [Net](https://sketchfab.com/3d-models/jellyfish-net-spongebob-30e08be02db047a39882403e48694c58)\
-[squidward's house](https://sketchfab.com/3d-models/spongebob-squidwards-house-a2bd87c3f39d460ebeba9a5eb1ce60da) \
+[Squidward's house](https://sketchfab.com/3d-models/spongebob-squidwards-house-a2bd87c3f39d460ebeba9a5eb1ce60da) \
 [Skybox textures](https://blocklandglass.com/addons/addon/192)\
-[ground texture](https://sketchfab.com/3d-models/stylized-sand-material-2a5232fcc7224a22a99d621763ac7ebb)
+[Ground texture](https://sketchfab.com/3d-models/stylized-sand-material-2a5232fcc7224a22a99d621763ac7ebb)
 
 ## Computer Graphics
 Year: 2023/2024 \
