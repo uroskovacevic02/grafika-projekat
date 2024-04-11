@@ -292,6 +292,12 @@ int main() {
     Model modelLampa("resources/objects/bus_stop-spongebob_battle_for_bkinibottom/scene.gltf");
     modelLampa.SetShaderTextureNamePrefix("material.");
 
+    Model modelLKuca("resources/objects/spongebob__squidwards_house/scene.gltf");
+    modelLKuca.SetShaderTextureNamePrefix("material.");
+//
+//    Model modelAnanas("resources/objects/coral_1/scene.gltf");
+//    modelAnanas.SetShaderTextureNamePrefix("material.");
+
 
     unsigned int diffuseMap = loadTexture(FileSystem::getPath("resources/textures/Sand_basecolor.png").c_str());
     unsigned int normalMap = loadTexture(FileSystem::getPath("resources/textures/Sand_normal.png").c_str());
@@ -362,13 +368,14 @@ int main() {
 
         glDisable(GL_CULL_FACE);
         normalShader.use();
-        normalShader.setMat4("projection", projection);
+        normalShader.setMat4("projection", projection);     renderGround();
+
         normalShader.setMat4("view", view);
         model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(10.0f, 0.0f, 10.0f));
+        model = glm::translate(model, glm::vec3(0.0f, -5.0f, 0.0f));
         model = glm::rotate(model, 1.57f, glm::vec3(1.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.01f));
-        normalShader.setMat4("model", model);
+        model = glm::scale(model, glm::vec3(100.0f));
+       normalShader.setMat4("model", model);
         normalShader.setVec3("viewPos", programState->camera.Position);
 
 
@@ -474,14 +481,20 @@ int main() {
         modelShader.setMat4("model", model);
         modelMreza.Draw(modelShader);
 
-        std::vector<float> x_coords_meduza = {-6.0f, 6.0f, 2.50f, 0.0f};
-        std::vector<float> y_coords_meduza = {5.0f, 4.0f, 7.0f, 5.0f};
-        std::vector<float> z_coords_meduza = {0.0f, -0.75f, -2.0f, -3.0f};
 
+//
+//        std::vector<float> x_coords_meduza = {-6.0f, 6.0f, 2.50f, 0.0f};
+//        std::vector<float> y_coords_meduza = {5.0f, 4.0f, 7.0f, 5.0f};
+//        std::vector<float> z_coords_meduza = {0.0f, -0.75f, -2.0f, -3.0f};
+
+        srand(12);
         //meduza
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 35; i++) {
             model = glm::mat4(1.0f);
-            model = glm::translate(model, glm::vec3(x_coords_meduza[i], abs(sin(glfwGetTime()))+y_coords_meduza[i], z_coords_meduza[i])); // translate it down so it's at the center of the scene
+            float x_coord = rand()%50;
+            float y_coord = rand()%20;
+            float z_coord = rand()%50;
+            model = glm::translate(model, glm::vec3(x_coord, abs(2*sin(glfwGetTime())) + y_coord, z_coord)); // translate it down so it's at the center of the scene
             model = glm::scale(model, glm::vec3(2.0f));    // it's a bit too big for our scene, so scale it down
             modelShader.setMat4("model", model);
             modelMeduza.Draw(modelShader);
@@ -489,15 +502,15 @@ int main() {
 
         //patrik
         model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(-10.0f, -5.0f, 0.0f)); // translate it down so it's at the center of the scene
+        model = glm::translate(model, glm::vec3(-10.0f, -4.0f, 0.0f)); // translate it down so it's at the center of the scene
         model = glm::scale(model, glm::vec3(2.5f));    // it's a bit too big for our scene, so scale it down
         modelShader.setMat4("model", model);
         modelPatrik.Draw(modelShader);
 
         //kola
         model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(12.0f, 0.0f, -2.0f)); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(3.5f));    // it's a bit too big for our scene, so scale it down
+        model = glm::translate(model, glm::vec3(22.0f, 0.0f, -2.0f)); // translate it down so it's at the center of the scene
+        model = glm::scale(model, glm::vec3(6.0f));    // it's a bit too big for our scene, so scale it down
         modelShader.setMat4("model", model);
         modelKola.Draw(modelShader);
 
@@ -505,11 +518,30 @@ int main() {
         model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(-22.0f, -5.0f, 0.0f)); // translate it down so it's at the center of the scene
         model = glm::rotate(model, 1.57f, glm::vec3(-1.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(3.5f));    // it's a bit too big for our scene, so scale it down
+        model = glm::scale(model, glm::vec3(6.0f));    // it's a bit too big for our scene, so scale it down
         modelShader.setMat4("model", model);
         modelLampa.Draw(modelShader);
 
-        //lights
+
+        //kuca lingnjoslavljeva
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-52.0f, -5.0f, 20.0f)); // translate it down so it's at the center of the scene
+        model = glm::rotate(model, 1.57f, glm::vec3(-1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, 2.97f, glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::scale(model, glm::vec3(4.0f));    // it's a bit too big for our scene, so scale it down
+        modelShader.setMat4("model", model);
+        modelLKuca.Draw(modelShader);
+        glDisable(GL_CULL_FACE);
+        //kuca ananas
+//        model = glm::mat4(1.0f);
+//        model = glm::translate(model, glm::vec3(10.0f, -5.0f, 20.0f)); // translate it down so it's at the center of the scene
+//        model = glm::rotate(model, 1.57f, glm::vec3(1.0f, 0.0f, 0.0f));
+////        model = glm::rotate(model, 1.77f, glm::vec3(0.0f, 0.0f, 1.0f));
+//        model = glm::scale(model, glm::vec3(2.0f));    // it's a bit too big for our scene, so scale it down
+//        modelShader.setMat4("model", model);
+//        modelAnanas.Draw(modelShader);
+//
+//        //lights
         normalShader.setVec3("pointLight.position", pointLight.position);
         normalShader.setVec3("pointLight.ambient", pointLight.ambient);
         normalShader.setVec3("pointLight.diffuse", pointLight.diffuse);
@@ -545,8 +577,7 @@ int main() {
         glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, depthMap);
 
-        renderGround();
-        
+
         glDepthFunc(GL_LEQUAL);
         skyboxShader.use();
         skyboxShader.setMat4("view", glm::mat4(glm::mat3(view)));
@@ -677,12 +708,23 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         }
     }
+    if (key == GLFW_KEY_B && action == GLFW_PRESS)
+        blinn = !blinn;
+
 
     if(glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS){
-        if(heightScale > 0.0f){
+        if(heightScale > 0.0f) {
+            heightScale += 0.1;
+        }
+       else{
+                heightScale = 0.0;
+            }
+    }
+    if(glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
+        if (heightScale < 1.0f) {
             heightScale -= 0.1;
         } else {
-            heightScale += 0.1f;
+            heightScale = 1.0f;
         }
     }
     
@@ -761,13 +803,14 @@ unsigned int groundVAO = 0;
 unsigned int groundVBO;
 void renderGround()
 {
-    if (groundVAO == 0)
+
+    if (groundVAO== 0)
     {
         // positions
-        glm::vec3 pos1(60.0f,  -0.8f, 60.0f);
-        glm::vec3 pos2(60.0f, -0.8f, -60.0f);
-        glm::vec3 pos3( -60.0f, -0.8f, -60.0f);
-        glm::vec3 pos4( -60.0f,  -0.8f, 60.0f);
+        glm::vec3 pos1(-1.0f,  1.0f, 0.0f);
+        glm::vec3 pos2(-1.0f, -1.0f, 0.0f);
+        glm::vec3 pos3( 1.0f, -1.0f, 0.0f);
+        glm::vec3 pos4( 1.0f,  1.0f, 0.0f);
         // texture coordinates
         glm::vec2 uv1(0.0f, 1.0f);
         glm::vec2 uv2(0.0f, 0.0f);
@@ -791,10 +834,12 @@ void renderGround()
         tangent1.x = f * (deltaUV2.y * edge1.x - deltaUV1.y * edge2.x);
         tangent1.y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y);
         tangent1.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
+        tangent1 = glm::normalize(tangent1);
 
         bitangent1.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
         bitangent1.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
         bitangent1.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
+        bitangent1 = glm::normalize(bitangent1);
 
         // triangle 2
         // ----------
@@ -808,11 +853,13 @@ void renderGround()
         tangent2.x = f * (deltaUV2.y * edge1.x - deltaUV1.y * edge2.x);
         tangent2.y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y);
         tangent2.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
+        tangent2 = glm::normalize(tangent2);
 
 
         bitangent2.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
         bitangent2.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
         bitangent2.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
+        bitangent2 = glm::normalize(bitangent2);
 
 
         float quadVertices[] = {

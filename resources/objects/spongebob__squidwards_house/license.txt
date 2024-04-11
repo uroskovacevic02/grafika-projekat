@@ -1,0 +1,11 @@
+Model Information:
+* title:	Spongebob,  Squidwards house
+* source:	https://sketchfab.com/3d-models/spongebob-squidwards-house-a2bd87c3f39d460ebeba9a5eb1ce60da
+* author:	Cave (https://sketchfab.com/cave)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Spongebob,  Squidwards house" (https://sketchfab.com/3d-models/spongebob-squidwards-house-a2bd87c3f39d460ebeba9a5eb1ce60da) by Cave (https://sketchfab.com/cave) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
